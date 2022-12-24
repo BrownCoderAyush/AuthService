@@ -5,7 +5,7 @@ const app = express();
 const prepareAndStartServer = ()=>{
 
 
-    app.listen(3001 ,()=>{
+    app.listen(PORT ,()=>{
         console.log(`Server Started on Port : ${PORT}`);
     })
 }
