@@ -5,7 +5,7 @@ const apiRoutes = require('./routes/index');
 const {PORT} = require('./config/serverConfig');
 const db = require('./models/index');
 const UserRepository = require('./repository/user-repository');
-
+// const UserService = require('./services/user-service');
 const app = express();
 
 const prepareAndStartServer = ()=>{
@@ -17,10 +17,16 @@ const prepareAndStartServer = ()=>{
     app.listen(PORT ,async ()=>{
 
         console.log(`Server Started on Port : ${PORT}`);
-        
-            if(process.env.SYNC_DB){
-                db.sequelize.sync({alter:false});
-            }
+        if(process.env.SYNC_DB){
+            db.sequelize.sync({alter:false});
+        }
+        // const userService = new UserService();
+        // const newToken = userService.createToken({email : 'sanket@admin.com' , id : 1 });
+        // console.log("new token is " , newToken);
+        // const response = userService.verifyToken(newToken);
+        // console.log("after verification " , response);
+
+
     })
 }
 
