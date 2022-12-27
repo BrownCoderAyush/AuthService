@@ -30,6 +30,7 @@ class UserService{
     verifyToken(Token){
         try {
             const result = jwt.verify(Token , JWT_KEY);
+            console.log(result);
             return result;
         } catch (error) {
             console.log("Something went wrong in Token verification " , error);
@@ -65,6 +66,23 @@ class UserService{
 
         } catch (error) {
             console.log("Something went wrong while signIn Process " , error);
+            throw error;
+        }
+    }
+
+    async isAuthenticated(token){
+        try {
+            const response = this.verifyToken(token);
+            if(!response){
+                throw {error:"Invalid token"}
+            } 
+            const user = this.UserRepository.findById(response.id);
+            if(!user){
+                throw {error:"No user with the corresponding token exist"}
+            }
+            return user.id;
+        } catch (error) {
+            console.log("Something went wrong in auth Process ");
             throw error;
         }
     }
