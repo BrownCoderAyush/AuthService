@@ -57,15 +57,16 @@ class UserService{
             const user = await this.UserRepository.findByEmail(email);
             const passwordMatch = this.checkPassword( Plainpassword , user.password);
 
-            console.log(passwordMatch);
+            // console.log(passwordMatch);
             // step 2 -> comapre incoming password with stored encrypted Password
             if(!passwordMatch){
-                console.log("password dosen't match");
+                // console.log("password dosen't match");
                 throw { error : 'Incorrect Password '};
             }
+            
             // step 3 -> if password match then create a token and send it to the user 
             const newJwtToken = this.createToken({email : user.email , id : user.id});
-            console.log('new token is ' , newJwtToken);
+            // console.log('new token is ' , newJwtToken);
             return newJwtToken;
 
         } catch (error) {
