@@ -28,6 +28,28 @@ const create = async (req,res)=>{
 
 }
 
+const get = async (req,res)=>{
+    try {
+        const response = await userService.getByUserId(req.params.userId);
+        return res.status(201).json({
+            success : true , 
+            message : "Successfully fetched a user" , 
+            data : response ,
+            err : {
+            }
+        })        
+    } catch (error){
+        console.log(error);
+        return res.status(500).json({
+            message : "Something went wrong",
+            data : {},
+            err: error ,
+            success : false
+        })
+    }
+}
+
+
 const signIn = async (req,res)=>{
         try {
             const response = await userService.signIn(req.body.email , req.body.password);
@@ -95,5 +117,6 @@ module.exports = {
     create,
     signIn,
     isAuthenticated,
-    isAdmin
+    isAdmin,
+    get
 }

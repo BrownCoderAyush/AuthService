@@ -15,6 +15,12 @@ router.post(
 );
 
 router.get(
+    '/users/:userId',
+     userController.get
+
+)
+
+router.get(
     '/isAuthenticated',
     userController.isAuthenticated
 )
