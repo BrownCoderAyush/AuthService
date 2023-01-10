@@ -75,7 +75,7 @@ class UserRepository {
                 where: {
                     name: 'ADMIN'
                 }
-            });
+            });        
             return user.hasRole(adminRole);
 
         } catch (error) {
