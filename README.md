@@ -30,3 +30,8 @@ JWT_KEY=auth
 
 - Once you've added your db config as listed above, go to the src folder from your terminal and execute `npx sequelize db:create`
 and then execute `npx sequelize db:migrate`
+
+
+## Seeding files 
+- to seed the data for seeding files in your MySQL db run following commands sequentially .
+     `npx sequelize-cli db:seed --seed 20221228174339-add-roles.js`\
