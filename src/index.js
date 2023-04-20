@@ -5,8 +5,8 @@ const apiRoutes = require('./routes/index');
 const {PORT} = require('./config/serverConfig');
 const db = require('./models/index');
 const {User , Role} = require('./models/index');
-const UserRepository = require('./repository/user-repository');
-// const UserService = require('./services/user-service');
+
+
 const app = express();
 
 const prepareAndStartServer = ()=>{
@@ -21,10 +21,19 @@ const prepareAndStartServer = ()=>{
         if(process.env.SYNC_DB){
             db.sequelize.sync({alter:false});
         }
-        const u1 = await User.findByPk(11);
-        const r = await Role.findByPk(1);
-        u1.addRole(r);
+
+        
+        // const role = await Role.findByPk(1);
+        // console.log(role);
+
+        // const u1 = await User.findByPk(1);
+        // u1.addRole(role);
+        // console.log(u1);
+        // u1.addRole()
+        // const r = await Role.findByPk(1);
+        // u1.addRole(r);
         // const z = await u1.getRoles();
+        // await Role.create({name : 'Customer'});
         // const userService = new UserService();
         // const newToken = userService.createToken({email : 'sanket@admin.com' , id : 1 });
         // console.log("new token is " , newToken);
