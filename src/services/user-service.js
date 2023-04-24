@@ -50,7 +50,7 @@ class UserService {
     verifyToken(Token) {
         try {
             const result = jwt.verify(Token, JWT_KEY);
-            console.log(result);
+            console.log("after verified", result);
             return result;
         } catch (error) {
             console.log("Something went wrong in Token verification ", error);
